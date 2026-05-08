@@ -1,5 +1,5 @@
 // Ryan Chavez
-// CSC 492 - Saves data from in the IoT device
+// UserRepository - Saves data from in the IoT device
 
 package com.example.secure_iot_heart_device_csc492.repository;
 

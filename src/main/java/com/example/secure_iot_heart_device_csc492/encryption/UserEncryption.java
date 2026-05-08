@@ -24,7 +24,7 @@ public class UserEncryption implements UserDetailsService {
         return User.builder()
                 .username(appUser.getUsername())
                 .password(appUser.getPassword())
-                .roles(appUser.getRole()) // DOCTOR → ROLE_DOCTOR, NURSE → ROLE_NURSE
+                .roles(appUser.getRole()) // Doctor
                 .build();
     }
 }

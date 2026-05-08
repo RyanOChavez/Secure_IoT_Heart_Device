@@ -1,5 +1,7 @@
-package com.example.secure_iot_heart_device_csc492.security;
+// Ryan Chavez
+// SecurityFormat: Allows for Spring Securty to be used. The doctor account is created with a username and password.
 
+package com.example.secure_iot_heart_device_csc492.security;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -16,17 +18,11 @@ public class SecurityFormat {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http
-                .csrf(csrf -> csrf.disable())
-                .headers(headers -> headers.frameOptions(frame -> frame.disable())) // allow H2 console iframe
+        http.csrf(csrf -> csrf.disable()).headers(headers -> headers.frameOptions(frame -> frame.disable())) // allow H2 console iframe
                 .authorizeHttpRequests(auth -> auth
-                        // IoT devices post encrypted data without user credentials
-                        .requestMatchers(HttpMethod.POST, "/api/device/**").permitAll()
-                        // H2 console for development inspection
-                        .requestMatchers("/h2-console/**").permitAll()
-                        // Patient data: both roles can read
-                        .requestMatchers(HttpMethod.GET, "/api/patients/**").hasRole("DOCTOR").anyRequest().authenticated()
-
+                        .requestMatchers(HttpMethod.POST, "/api/device/**").permitAll().requestMatchers("/h2-console/**").permitAll() // IoT device is allowed to dtore data without log information
+                        .requestMatchers(HttpMethod.GET, "/api/patients/**").hasRole("DOCTOR"). // Doctors could only access patient records
+                        anyRequest().authenticated() // doctor must log in
                 )
                 .httpBasic(Customizer.withDefaults());
 

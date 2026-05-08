@@ -19,7 +19,7 @@ public class Home {
         return ResponseEntity.ok(Map.of(
                 "app", "Secure IoT Heart Device",
                 "endpoints", Map.of(
-                        "GET /api/patients",        "List all patients (DOCTOR, NURSE)",
+                        "GET /api/patients",        "List all patients (DOCTOR)",
                         "POST /api/device/data",    "Receive IoT device data (no auth required)",
                         "GET /h2-console",          "H2 database console (no auth required)"
                 )

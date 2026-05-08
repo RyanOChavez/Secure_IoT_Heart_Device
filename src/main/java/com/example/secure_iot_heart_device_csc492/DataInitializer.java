@@ -31,9 +31,9 @@ public class DataInitializer implements ApplicationRunner {
     public void run(ApplicationArguments args) {
         if (userRepository.count() > 0) return;
 
-        userRepository.save(new User("doctorroc", passwordEncoder.encode("abc123"), "DOCTOR"));
+        userRepository.save(new User("doctorroc", passwordEncoder.encode("abc123"), "Doctor"));
 
 
-        log.info("Created users: doctor1 (DOCTOR)");
+        log.info("Created users: doctorroc (Doctor)");
     }
 }

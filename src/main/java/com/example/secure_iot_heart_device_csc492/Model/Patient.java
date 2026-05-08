@@ -18,14 +18,14 @@ public class Patient {
     private String deviceId;
 
     @Column(length = 512)
-    private String encrytptedDeviceId;
+    private String encrytptedDeviceId; // Encrypted device infomation
 
     @Column(length = 512)
     private String encrytptedTemp;
 
     private int heartRate;
     private double temp;
-    private LocalDateTime created;
+    private LocalDateTime created; // Keeping track when data is created
 
     public Patient() { // deafult constructor
 

@@ -1,8 +1,8 @@
+// Ryan Chavez
+// AES Encryption: Encypyts and decrypts data. Keep patient data secured and unreadble
 package com.example.secure_iot_heart_device_csc492.encryption;
-
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-
 import javax.crypto.Cipher;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
@@ -16,19 +16,19 @@ public class AesEncryption {
     private String key;
     @Value("${aes.secret.iv}")
     private String iv;
-
+    // Text becomes encryoted
     public String encrypt(String plainText) throws Exception {
         Cipher cipher = buildCipher (Cipher.ENCRYPT_MODE);
         byte[] encrypted = cipher.doFinal(plainText.getBytes(StandardCharsets.UTF_8));
         return Base64.getEncoder().encodeToString(encrypted);
     }
-
+    // string becomes decrypted to make data readable
     public String decrypt(String encryptedText) throws Exception {
         Cipher cipher = buildCipher(Cipher.DECRYPT_MODE);
         byte[] decrypted = cipher.doFinal(Base64.getDecoder().decode(encryptedText));
         return new String(decrypted, StandardCharsets.UTF_8);
     }
-
+    // AES cipher is built using a secret key and vector
     private Cipher buildCipher(int mode) throws Exception {
         SecretKeySpec secretKeySpec = new SecretKeySpec(key.getBytes(StandardCharsets.UTF_8), "AES");
         IvParameterSpec ivParameterSpec = new IvParameterSpec(iv.getBytes(StandardCharsets.UTF_8));
