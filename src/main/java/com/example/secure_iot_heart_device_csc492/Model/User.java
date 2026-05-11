@@ -1,5 +1,5 @@
 // Ryan Chavez
-// CSC 492 - User Class : Handles and stores log in information. User depending on the role must enter a id number, password, and role based on if they are a patient, nurse, or doctor
+// User - stores log in information from doctor
 
 
 package com.example.secure_iot_heart_device_csc492.Model;

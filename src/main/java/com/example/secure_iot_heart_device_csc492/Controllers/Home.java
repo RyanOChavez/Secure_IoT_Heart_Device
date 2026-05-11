@@ -1,5 +1,5 @@
 // Ryan Chavez
-// CSC 492 - Home Controller: Provides a root endpoint so the browser has a landing page with available API routes
+// Home - Provides a root endpoint for the browser to have a landing page
 
 package com.example.secure_iot_heart_device_csc492.Controllers;
 
